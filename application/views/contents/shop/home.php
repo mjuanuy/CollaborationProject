@@ -1,13 +1,10 @@
+<!-- <?php echo $this->session->userdata('cus_id');?> -->
 <div class="container-fluid">
-	<div style="margin-left:90%;">
-	<h3>Welcome <?= $this->session->userdata('username'); ?></h3>
-	<a href="<?= base_url('app/logout'); ?>">Logout</a>
-	</div>
 	<hr>
 	Latest Products
 		<div class="container-fluid">
                 <?php foreach ($latest_products as $latest) { ?>
-                    <div class="panel-body well" style=" float:left;padding:20px;margin:10px;background-color:#DCDCDC;">
+                    <div class="panel-body well" style=" float:left;padding:20px;margin:10px;">
                         <a href="<?= base_url('Shop/details?product='.$latest->product_id)?>" ><img style="width:250px;height:250px" src="<?php echo base_url('uploads/'.$latest->product_image)?>" alt="" /></a>
                         <h4><?php echo $latest->product_name?></h4>
                         <p><?php echo $latest->short_desc?></p>
@@ -23,7 +20,7 @@
  	<br>	
 		<div class="container-fluid">
                 <?php foreach ($products as $single_products) { ?>
-                    <div class="panel-body well" style=" float:left;padding:20px;margin:10px;background-color:#DCDCDC;">
+                    <div class="panel-body well" style=" float:left;padding:20px;margin:10px;">
                         <a  href="<?= base_url('Shop/details?product='.$single_products->product_id)?>" ><img style="width:250px;height:250px" src="<?php echo base_url('uploads/'.$single_products->product_image)?>" alt="" /></a>
                         <h4><?php echo $single_products->product_name?></h4>
                         <p><?php echo $single_products->short_desc?></p>

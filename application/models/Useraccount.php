@@ -6,7 +6,7 @@ class Useraccount extends CI_Model {
     protected $table = "useraccounts";
 
     public function check_account($data){
-    	$sql = "SELECT * FROM ".$this->table." WHERE username = '".$data['username']."' AND password = '".$data['password']."'";
+    	$sql = "SELECT * FROM ".$this->table." join customers on useraccounts.userid=customers.userid WHERE username = '".$data['username']."' AND password = '".$data['password']."'";
 
     	return $this->db->query($sql)->result();
     }

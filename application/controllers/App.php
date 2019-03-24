@@ -27,11 +27,16 @@ class App extends CI_Controller {
 		$result = $this->user->check_account($data);
 
 		if(count($result) && $result[0]->accesslevel == 1){
-			$this->setSession($result);			
+			$this->setSession($result);	
+
 			redirect('dashboard');
 		}else if(count($result) && $result[0]->accesslevel == 3){
-			$this->setSession($result);			
-			redirect('Shop');
+			$this->setSession($result);	
+			if($this->cart->total_items()){
+				redirect('shop/cart');
+				}else{
+					redirect('shop');
+				}
 		}else{
 			$this->setFlashData(array('alertType' => 'danger'));
 			$this->setFlashData(array('system_msg' => array("Account doesn't Exist!")));
@@ -43,7 +48,7 @@ class App extends CI_Controller {
 
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect('app');
+		redirect('shop');
 	}
 
 	public function registration(){
@@ -70,6 +75,7 @@ class App extends CI_Controller {
 
 	private function setSession($data){
 		$sessionData = array(
+			'cus_id'=>$data[0]->cus_id,
 		    'username'  => $data[0]->username,
 		    'accesslevel' => $data[0]->accesslevel,
 		    'logged_in' => TRUE
@@ -87,7 +93,7 @@ class App extends CI_Controller {
 			if($this->session->userdata('accesslevel') == 1){
 				redirect('dashboard');
 			}else if($this->session->userdata('accesslevel') == 3){
-				redirect('students');
+				redirect('shop');
 			}
 		}else{
 			return true;

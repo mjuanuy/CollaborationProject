@@ -1,11 +1,6 @@
 
 <div class="container-fluid">
-    <div style="margin-left:90%;">
-    <h3>Welcome <?= $this->session->userdata('username'); ?></h3>
-    <a href="<?= base_url('app/logout'); ?>">Logout</a>
-    </div>
-
-            <div align="center" style="width:90%">
+            <div align="center" style="width:90%"> <q></q>
                 <h2 style="margin-right:64%;">Your Cart</h2>
                 <?php if ($this->cart->total_items()) { ?>
                     <table class="tblone" style="height:40px;">
@@ -57,7 +52,7 @@
                             <td>PHP. 
                                 <?php
                                 $total = $this->cart->total();
-                                $tax = ($total * 15) / 100;
+                                $tax = ($total * 12) / 100;
                                 echo $this->cart->format_number($tax);
                                 ?>
                             </td>
@@ -67,6 +62,15 @@
                             <td>PHP. <?php echo $this->cart->format_number($tax + $this->cart->total()); ?> </td>
                         </tr>
                     </table>
+                </div>
+            </div>
+            <br>
+            <br>
+                        <div style="display:block;"align="center">
+                            <td><a href="<?= base_url('shop/'); ?>" class="btn btn-info">Continue Shopping</a></td>
+                            <td><a href="<?= base_url('shop/checkout');?>" class="btn btn-success">Check Out</a></td>
+                        </tr>
+                    </div>
                     <?php
                 } else {
                     echo "<h1>Your Cart Empty</h1>";

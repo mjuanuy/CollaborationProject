@@ -1,8 +1,4 @@
 <div class="container-fluid">
-	<div style="margin-left:90%;">
-	<h3>Welcome <?= $this->session->userdata('username'); ?></h3>
-	<a href="<?= base_url('app/logout'); ?>">Logout</a>
-	</div>
 	<hr>
 
 <p>Products><span><?php echo $product_detail[0]->category_name?></span></p>
