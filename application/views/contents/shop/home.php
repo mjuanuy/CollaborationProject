@@ -14,7 +14,7 @@
                         <p><span class="price"><?php echo $this->cart->format_number($latest->sell_price) ?> PHP</span></p>
                         <div class="button"><span><a href="<?php echo base_url('Shop/details?product='.$latest->product_id);?>" class="btn btn-primary">Details</a></span></div>
                     </div>
-                    <?php
+                    <?php 
                 }
                 ?>
          </div>
