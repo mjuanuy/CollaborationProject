@@ -21,7 +21,6 @@ class App extends CI_Controller {
 		$this->load->view('templates/main', $data);
 	}
 
-
 	public function login(){
 		$data = $this->input->post();
 		$result = $this->user->check_account($data);

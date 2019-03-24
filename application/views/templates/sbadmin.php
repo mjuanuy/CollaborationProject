@@ -66,7 +66,7 @@
             <a class="collapse-item" href="buttons.html">Buttons</a>
             <a class="collapse-item" href="cards.html">Cards</a>
           </div>
-        </div>
+
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
@@ -85,6 +85,22 @@
           </div>
         </div>
       </li>
+
+        <!-- this is for the inventory admin link-->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#inventoryLinks" aria-expanded="true" aria-controls="inventoryLinks">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Inventory</span>
+        <div id="inventoryLinks" class="collapse" aria-labelledby="headinginventory" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Inventory by:</h6>
+            <a class="collapse-item" href="inventory">Products</a>
+            <a class="collapse-item" href="inventory">Supplier</a>
+            <a class="collapse-item" href="inventory">Category</a>
+          </div>
+        </div>
+      </li>
+        <!-- this is for the inventory admin link-->
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -349,7 +365,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Collaboration Project 2019</span>
           </div>
         </div>
       </footer>

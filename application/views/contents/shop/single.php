@@ -9,7 +9,7 @@
 <div class="container-fluid" >
 	<div class="panel-body well">
 		<div style="float:left;"> 
-    	 <img style="width:400px;height:400px;margin-right:30px;" src="<?php echo base_url('uploads/'.$product_detail[0]->product_image)?>" alt="" />
+    	 <img style="height:250px;margin-right:30px;" src="<?php echo base_url('uploads/'.$product_detail[0]->product_image)?>" alt="" />
  		</div>
      	<div >
 			<h2><?php echo $product_detail[0]->product_name?></h2>
