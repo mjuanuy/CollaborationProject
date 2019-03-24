@@ -1,4 +1,4 @@
-
+</div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="assets/assets/vendor/jquery/jquery.min.js"></script>

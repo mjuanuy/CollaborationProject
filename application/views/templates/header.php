@@ -22,15 +22,15 @@
 
 </head>
 
-<body id="page-top">
-
+<body id="page-top" style="background-color:#E8E8E8;">
+<div class="container-fluid" text-align="center" style="width:90%;background-color:#FFFFFF">
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 <div class="panel-body well">
   <a href="<?= base_url('shop'); ?>">
       <img style="width:100px;height:68px" src="<?php echo base_url('uploads/r1.png')?>" />
   </a></div>
     
-  <div class="container-fluid" style="margin-left:2%;width:80%;">
+  <div class="container-fluid" style="margin-left:2%;width:100%;">
 
         <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
           <button class="btn btn-primary" type="button">
@@ -53,6 +53,7 @@
     <div>
       <h3 class="navbar-brand mr-1" >Welcome, <?= $this->session->userdata('username'); ?>!</h3>
     <ul class="navbar-nav ml-auto ml-md-0">
+      <li><a href="<?= base_url('shop/view_orders'); ?>" class="nav-link">Order History</a></li>
 <!--       <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell fa-fw"></i>
@@ -62,9 +63,10 @@
       <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-        </a> -->
-      </li>
-          <a class="nav-link" href="<?= base_url('app/logout'); ?>">Logout</a>
+        </a>
+      </li> -->
+      <li>
+          <a class="nav-link" href="<?= base_url('app/logout'); ?>">Logout</a><
 
     </ul>
  <?php }else{?> 

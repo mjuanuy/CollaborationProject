@@ -1,5 +1,5 @@
 <!-- <?php echo $this->session->userdata('cus_id');?> -->
-<div class="container-fluid">
+<div class="container-fluid" style="width:80%;">
 	<hr>
 	Latest Products
 		<div class="container-fluid">

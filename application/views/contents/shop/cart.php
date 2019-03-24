@@ -32,7 +32,7 @@
                                 </td>
                                 <td>PHP. <?php echo $this->cart->format_number($cart_items['subtotal']) ?></td>
                                 <td>
-                                    <form action="<?php echo base_url('remove/cart'); ?>" method="post">
+                                    <form action="<?php echo base_url('shop/remove_cart'); ?>" method="post">
                                         <input type="hidden" name="rowid" value="<?php echo $cart_items['rowid'] ?>"/>
                                         <input type="submit" name="submit" value="X"/>
                                     </form>
