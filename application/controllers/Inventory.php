@@ -5,41 +5,16 @@ class Inventory extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('Useraccount', 'user');
-		$this->load->model('Product','prod');		
-	}
+		$this->load->model('Inventaryo','inv');		
+	}	
 
 	public function index(){
 		$this->check_access();
-		$data['users'] = $this->user->read();
+	//	$data['latest_products'] = $this->prod->read_latest_product();		
+		$data['products'] = $this->inv->read_all_products();
 		$data['pagename'] = 'Inventory';
 		$data['contents'] = 'inventory';		
 		$this->load->view('templates/sbadmin', $data);
-	}
-
-	public function update(){
-		$this->check_access();
-		$userid = $this->input->get('userid');
-
-		$data['useraccount'] = $this->user->read($userid);
-
-		$data['pagename'] = 'Inventory';
-		$data['contents'] = 'contents/admin/update';		
-		$this->load->view('templates/main', $data);
-
-	}
-
-	public function updateAccount(){
-
-		$data = $this->input->post();
-		$userid = $this->input->post('userid');
-
-		if($this->user->update($data, $userid)){
-			redirect('dashboard');
-		}else{
-			echo "Failed to update! <a href='".base_url('dashboard')."'>Go back</a>";
-		}
-
 	}
 
 	public function disable(){

@@ -16,6 +16,12 @@ class App extends CI_Controller {
 		$data['contents'] = 'home';
 		$this->load->view('templates/main', $data);
 	}
+		public function pasokpo(){
+	$this->check_access();
+	$data['pagename'] = 'Login';
+	$data['contents'] = 'login';
+		$this->load->view('templates/main', $data);
+	}
 
 	public function register(){
 		$data['pagename'] = 'Register';

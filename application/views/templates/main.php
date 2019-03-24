@@ -16,14 +16,17 @@
     <img src="<?= base_url('assets/img/'); ?>small-globe.png" alt="Logo" style="width:40px;">
   </a>
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#"> WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
       <li><a href="#">Shop</a></li>
       <li><a href="#">Cart</a></li>
       <li><a href="#">About us</a></li>
     </ul>
+    <div class="navbar-header" style="padding-left: 20px;float: right;">
+      <a class="navbar-brand glyphicon glyphicon-log-in" href="<?= base_url(); ?>app/pasokpo"> Login</a>
+    </div>
     <form class="form-inline" action="/action_page.php" style="margin-top: 10px; float: right;">
     <input class="form-control mr-sm-2" type="text" placeholder="Search">
     <button class="btn btn-success" type="submit">Search</button>
