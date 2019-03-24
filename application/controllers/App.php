@@ -9,9 +9,11 @@ class App extends CI_Controller {
 	}
 
 	public function index(){
-		$this->check_access();
-		$data['pagename'] = 'Login';
-		$data['contents'] = 'login';		
+	//	$this->check_access();
+	//	$data['pagename'] = 'Login';
+	//	$data['contents'] = 'login';
+		$data['pagename'] = 'Home';
+		$data['contents'] = 'home';
 		$this->load->view('templates/main', $data);
 	}
 
