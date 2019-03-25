@@ -11,13 +11,14 @@ class App extends CI_Controller {
 	public function index(){
 		$this->check_access();
 		$data['pagename'] = 'Login';
-		$data['contents'] = 'login';		
+		$data['contents'] = 'login';			
 		$this->load->view('templates/main', $data);
+
 	}
 
 	public function register(){
 		$data['pagename'] = 'Register';
-		$data['contents'] = 'registration';		
+		$data['contents'] = 'contents/shop/registration';		
 		$this->load->view('templates/main', $data);
 	}
 
@@ -55,19 +56,20 @@ class App extends CI_Controller {
 
 		$data = $this->input->post(); // return $_POST global array
 
-		$result = $this->validate($data); // return array of error messages
+		$err = $this->validate($data); // return array of error messages
 
 		$this->setFlashData(array('alertType' => 'danger'));
 
-		if(count($result) == 0){
-			if($this->user->create($data)){
+		if(count($err) == 0){
+			$result=$this->user->create($data);
+			if($this->user->create_customer($data,$result)){
 				$this->setFlashData(array('alertType' => 'success'));
 				$this->setFlashData(array('system_msg' => array("Successfully Registered!")));
 			}else{
 				$this->setFlashData(array('system_msg' => array("Failed to create!")));
 			}
 		}else{
-			$this->setFlashData(array('system_msg' => $result));
+			$this->setFlashData(array('system_msg' => $err));
 		}
 		
 		redirect('app/register');
@@ -107,6 +109,9 @@ class App extends CI_Controller {
 		if($data['username'] == ''){
 			array_push($sudlanan_sa_error, "Username is not define");
 		}
+		if($this->user->user_check($data['username'])==0){
+			array_push($sudlanan_sa_error, "Username is has already taken");
+		}		
 
 		if(strlen($data['password']) < 6){
 			array_push($sudlanan_sa_error, "Password should be atleast 6 characters");
@@ -123,6 +128,35 @@ class App extends CI_Controller {
 		if($data['password'] != $data['repassword']){
 			array_push($sudlanan_sa_error, "Password doesn't match");
 		}
+		if(!is_numeric($data['contact'])){
+			array_push($sudlanan_sa_error, "Please put a valid number");
+		}
+		if($data['city'] == ''){
+			array_push($sudlanan_sa_error, "City is not defined");
+		}
+		if($data['province'] == ''){
+			array_push($sudlanan_sa_error, "Province is not defined");
+		}	
+		if($data['street'] == ''){
+			array_push($sudlanan_sa_error, "Street is not defined");
+		}				
+		if($data['first_name'] == ''){
+			array_push($sudlanan_sa_error, "Enter your first name");
+		}
+		if($data['last_name'] == ''){
+			array_push($sudlanan_sa_error, "Enter your last name");
+		}		
+		if($data['postal'] == '' || !is_numeric($data['postal'])){
+			array_push($sudlanan_sa_error, "Enter a valid postal code");
+		}
+		if($data['last_name'] == ''){
+			array_push($sudlanan_sa_error, "Enter your last name");
+		}	
+		if($data['email'] == ''){
+			array_push($sudlanan_sa_error, "Enter your email");
+		}						
+
+
 
 		return $sudlanan_sa_error; // array size is zero if no errors
 	}

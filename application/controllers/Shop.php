@@ -55,6 +55,12 @@ class Shop extends CI_Controller {
         //echo var_dump($this->cart->contents());
         redirect('Shop/cart');
     }
+    public function remove_cart() {
+
+        $data = $this->input->post('rowid');
+        $this->cart->remove($data);
+        redirect('shop/cart');
+    }    
     public function checkout(){
     	$this->check_access();
     	$customer=$this->session->userdata('cus_id');
@@ -71,6 +77,58 @@ class Shop extends CI_Controller {
 
 
     }
+
+    public function save_order(){
+    	$this->check_access();
+
+    	$tax=($this->cart->total()*12)/100;
+    	$total=$tax + $this->cart->total();
+    	if($this->input->post('payment')==1){
+			$payment_status="Pending";
+			}
+		else{
+			$payment_status="Paid";
+			}
+		$data=array(
+			'cus_id'=> $this->session->userdata('cus_id'),
+			'cour_id'=>$this->input->post('cour'),
+			'amount'=>$total,
+			'payment_id'=>$this->input->post('payment'),
+			'payment_status'=>$payment_status
+
+
+		);
+		$result=$this->Order->save_order($data);
+		$chk=$this->Order->save_billing($data,$result);
+
+
+		$newdata=array();
+		$mycart=$this->cart->contents();
+
+		foreach($mycart as $cart){
+
+			$newdata['order_id']=$result;
+			$newdata['product_id']=$cart['id'];
+			$newdata['quantity']=$cart['qty'];
+			$this->Order->save_order_details_info($newdata);
+		}
+		$this->cart->destroy();
+		redirect('shop/view_orders');
+
+    }
+
+	public function view_orders(){
+		$this->check_access();
+		$cus_data=$this->session->userdata('cus_id');
+		$data['order']=$this->cust->read_order_by_customer($cus_data);
+    	$data['pagename'] = 'Orders';
+		$data['contents'] = 'contents/shop/orderhistory';	
+		$this->load->view('templates/header');		
+		$this->load->view('templates/main', $data);
+		$this->load->view('templates/footer');		
+
+
+	}    
 
 	private function check_access(){
 		if($this->session->has_userdata('logged_in')){

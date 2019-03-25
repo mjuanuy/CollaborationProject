@@ -21,7 +21,7 @@
                             <tr>
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $cart_items['name'] ?></td>
-                                <td><img src="<?php echo base_url('uploads/' . $cart_items['options']['product_image']) ?>" style="width:50px;height:40px;"alt=""/></td>
+                                <td><img src="<?php echo base_url('uploads/' . $cart_items['options']['product_image']) ?>" style="height:40px;"alt=""/></td>
                                 <td>PHP. <?php echo $this->cart->format_number($cart_items['price']) ?></td>
                                 <td>
                                     <form action="<?php echo base_url('update/cart'); ?>" method="post">
@@ -32,7 +32,7 @@
                                 </td>
                                 <td>PHP. <?php echo $this->cart->format_number($cart_items['subtotal']) ?></td>
                                 <td>
-                                    <form action="<?php echo base_url('remove/cart'); ?>" method="post">
+                                    <form action="<?php echo base_url('shop/remove_cart'); ?>" method="post">
                                         <input type="hidden" name="rowid" value="<?php echo $cart_items['rowid'] ?>"/>
                                         <input type="submit" name="submit" value="X"/>
                                     </form>

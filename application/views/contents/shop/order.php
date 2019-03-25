@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
 				<h4>Delivery Information</h4>
-			  	<div class="panel-body well" style="width:50%;float:left;padding-bottom:60px;">
+			  	<div class="panel-body well" style="width:50%;float:left;padding-bottom:80px;">
 			  			
 				    <table  width="600" align="left" cellpadding="2" cellspacing="3">
 				      <tr>
@@ -30,7 +30,7 @@
 			</div>
 			<div class="panel-body well" style="width:30%;float:left;margin-left: 40px;">
 				<div>
-					<form action="<?php echo base_url('update/cart'); ?>" method="post">
+					<form action="<?php echo base_url('shop/save_order'); ?>" method="post">
 						<table width="100%">
 							<tr>
 								<th width="30%">Order Summary</th>
@@ -42,7 +42,7 @@
 							<tr>
 								<td>Payment Method</td>
 								<td>
-										<select class="mdb-select md-form" name="payment">
+										<select class="mdb-select md-form" name="payment" required>
 											<option value="" disabled selected> Choose your payment method</option>
 										<?php foreach ($payment as $pay) {
 										?>
@@ -61,7 +61,7 @@
 							<tr>	
 								<td><br>Courier</td>
 								<td><br>
-										<select class="mdb-select md-form" name="cour">
+										<select class="mdb-select md-form" name="cour" required>
 									    <option value="" disabled selected> Choose your Courier</option>
 										<?php 
 										foreach ($courier as $cour) {
@@ -87,13 +87,16 @@
                                 echo $this->cart->format_number($tax);
                                 ?></td>
 							</tr>
+							<?php $total_amount=$this->cart->format_number($tax + $this->cart->total());?>
 							<tr>
 								<td><br>Total</td>
-								<td><br>PHP. <?php echo $this->cart->format_number($tax + $this->cart->total()); ?> </td>
+								<td><br>PHP. <?php echo $total_amount; ?> </td>
+								<input type="hidden" name="amount" value="<?php echo $total_amount; ?>"> 								
 							</tr>
 
 
 						</table>
+						<br>
 						<button type="submit" class="btn btn-primary" style="width:100%;">Place Order</button>
 					</form>
 				</div>

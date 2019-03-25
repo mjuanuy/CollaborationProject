@@ -15,9 +15,15 @@ class Useraccount extends CI_Model {
 
 		$sql = "INSERT INTO ".$this->table." (username, password) VALUES ('".$data['username']."','".$data['password']."')";
 
-		return $this->db->query($sql);
+		$this->db->query($sql);
+		return $this->db->insert_id();
 
 		// return $this->db->insert($data);
+
+	}
+	public function create_customer($data,$result){
+
+		return $this->db->insert('customers',array('userid'=>$result,'first_name'=>$data['first_name'],'last_name'=>$data['last_name'],'middle_name'=>$data['middle_name'],'contact_num'=>$data['contact'],'cus_street'=>$data['street'],'cus_city'=>$data['city'],'cus_province'=>$data['province'],'cus_email'=>$data['email'],'cus_postal'=>$data['postal']));	
 
 	}
 
@@ -49,6 +55,11 @@ class Useraccount extends CI_Model {
 		$sql = "UPDATE ".$this->table." SET status = '0' WHERE userid = '".$id."'";
 
 		return $this->db->query($sql);
+	}
+	public function user_check($data){
+		$sql="SELECT * from useraccounts where username= '".$data."'";
+		return $this->db->query($sql);
+
 	}
 
 }
