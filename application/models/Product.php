@@ -29,4 +29,58 @@ class Product extends CI_Model {
 
 		return $this->db->query($sql)->result();
 	}
+
+	public function File_upload($data){
+		$qry = $this->db->insert('products',$data);
+
+	}
+
+	public function submit(){
+		$field = array(
+			'product_id'=>$this->input->post('txt-product_id'),
+			'product_name'=>$this->input->post('txt-product_name'),
+			'purchase_price'=>$this->input->post('txt-purchase_price'),
+			'sell_price'=>$this->input->post('txt-purchase_sell'),
+			'short_desc'=>$this->input->post('txt-short_description'),
+			'description'=>$this->input->post('txt_description'),
+			'category_id'=>$this->input->post('txt-category_id'),
+			);
+
+		$this->db->insert('products',$field);
+		if($this->db->affected_rows() >0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	
+	}
+	public function getstock(){
+		$field = array(
+			'product_id'=>$this->input->post('txt-product_id'),
+			'stock_id'=>$this->input->post('txt-stock'),
+			'quantity'=>$this->input->post('txt-quantity'),
+			'supplier_id'=>$this->input->post('txt-supplier')
+			);
+		
+		$this->db->insert('stock',$field);
+		if($this->db->affected_rows() >0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	public function getproduct()
+	{	
+		
+		$query = $this->db->get('products');
+		if($query->num_rows() > 0){
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
+
 }
