@@ -62,12 +62,18 @@ class Useraccount extends CI_Model {
 
 	}
 
-	public function check_userid($data){
+	public function check_customerid($data){
 
-		$sql="SELECT * from customers where userid=".$data;
+		$sql="SELECT * from customers join where userid=".$data;
 
 		return $this->db->query($sql)->result();
 	}
+	public function check_supplierid($data){
+
+		$sql="SELECT * from supplier join where userid=".$data;
+
+		return $this->db->query($sql)->result();
+	}	
 
 	public function create_supp($data){
 

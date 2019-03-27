@@ -22,11 +22,29 @@ class Product extends CI_Model {
 		$sql = "SELECT * FROM ".$this->table." p join product_category c on p.category_id=c.category_id join stock s on p.product_id=s.product_id WHERE p.product_id='".$id."'";
 
 		return $this->db->query($sql)->result();
+	}
+
+	public function read_all_category(){
+		$sql="SELECT * FROM product_category";
+
+		return $this->db->query($sql)->result();
+	}
+
+	public function read_all_supplier(){
+		$sql="SELECT * FROM supplier";
+
+		return $this->db->query($sql)->result();
 	}	
+
 	public function read_stocks_by_id($id){
 
 		$sql = "SELECT * FROM stock WHERE product_id='".$id."'";
 
 		return $this->db->query($sql)->result();
+	}
+
+	public function save_product($data){
+
+		return $this->db->insert($this->table,$data);
 	}
 }

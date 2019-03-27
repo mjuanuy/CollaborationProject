@@ -79,7 +79,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Add:</h6>
             <a class="collapse-item" href="<?php echo base_url('Dashboard/register_supplier');?>">Supplier</a>
-            <a class="collapse-item" href="utilities-border.html">Products</a>
+            <a class="collapse-item" href="<?php echo base_url('Dashboard/add_product');?>">Products</a>
             <a class="collapse-item" href="utilities-animation.html">Courier</a>
             <a class="collapse-item" href="utilities-other.html">Other</a>
           </div>
