@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2019 at 05:52 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Generation Time: Mar 27, 2019 at 08:15 PM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,7 +45,10 @@ CREATE TABLE `billing` (
 INSERT INTO `billing` (`billing_id`, `amount`, `payment_date`, `payment_status`, `payment_id`, `order_id`, `cus_id`) VALUES
 (5, 264320.00, '2019-03-24 15:46:53', 'Pending', 1, 11, 1),
 (6, 348318.88, '2019-03-24 16:35:03', 'Paid', 2, 12, 1),
-(7, 54880.00, '2019-03-24 16:36:19', 'Pending', 1, 13, 1);
+(7, 54880.00, '2019-03-24 16:36:19', 'Pending', 1, 13, 1),
+(8, 43680.00, '2019-03-27 15:44:45', 'Pending', 1, 14, 1),
+(9, 104158.88, '2019-03-27 16:11:01', 'Pending', 1, 15, 1),
+(10, 54880.00, '2019-03-27 16:11:44', 'Paid', 2, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -65,6 +68,26 @@ CREATE TABLE `courier` (
 
 INSERT INTO `courier` (`cour_id`, `cour_name`, `cour_days`) VALUES
 (1, 'LBC Express', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courieraccount`
+--
+
+CREATE TABLE `courieraccount` (
+  `acc_id` int(10) NOT NULL,
+  `acc_uname` varchar(255) NOT NULL,
+  `acc_pword` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `courieraccount`
+--
+
+INSERT INTO `courieraccount` (`acc_id`, `acc_uname`, `acc_pword`) VALUES
+(1, 'jaks', 'jaks'),
+(2, 'liezel', 'almazon');
 
 -- --------------------------------------------------------
 
@@ -136,7 +159,10 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`order_id`, `cus_id`, `cour_id`, `orderDate`, `shippedDate`, `isDeliver`) VALUES
 (11, 1, 1, '2019-03-24 15:46:53', '2019-03-24 15:46:53', 'no'),
 (12, 1, 1, '2019-03-24 16:35:03', '2019-03-24 16:35:03', 'no'),
-(13, 1, 1, '2019-03-24 16:36:19', '2019-03-24 16:36:19', 'no');
+(13, 1, 1, '2019-03-24 16:36:19', '2019-03-24 16:36:19', 'no'),
+(14, 1, 1, '2019-03-27 15:44:44', '2019-03-27 15:44:44', 'no'),
+(15, 1, 1, '2019-03-27 16:11:01', '2019-03-27 16:11:01', 'no'),
+(16, 1, 1, '2019-03-27 16:11:44', '2019-03-27 16:11:44', 'no');
 
 -- --------------------------------------------------------
 
@@ -179,7 +205,10 @@ INSERT INTO `order_details` (`order_id`, `product_id`, `quantity`) VALUES
 (12, 16, 2),
 (12, 13, 2),
 (12, 14, 1),
-(13, 15, 1);
+(13, 15, 1),
+(14, 16, 1),
+(15, 14, 1),
+(16, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -355,6 +384,12 @@ ALTER TABLE `courier`
   ADD PRIMARY KEY (`cour_id`);
 
 --
+-- Indexes for table `courieraccount`
+--
+ALTER TABLE `courieraccount`
+  ADD PRIMARY KEY (`acc_id`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -438,68 +473,62 @@ ALTER TABLE `useraccounts`
 -- AUTO_INCREMENT for table `billing`
 --
 ALTER TABLE `billing`
-  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `courier`
 --
 ALTER TABLE `courier`
   MODIFY `cour_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+--
+-- AUTO_INCREMENT for table `courieraccount`
+--
+ALTER TABLE `courieraccount`
+  MODIFY `acc_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
   MODIFY `cus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `delivery`
 --
 ALTER TABLE `delivery`
   MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
   MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
   MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `supplier_transaction`
 --
 ALTER TABLE `supplier_transaction`
   MODIFY `sup_transactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `useraccounts`
 --
 ALTER TABLE `useraccounts`
   MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- Constraints for dumped tables
 --
@@ -519,44 +548,11 @@ ALTER TABLE `customers`
   ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `useraccounts` (`userid`);
 
 --
--- Constraints for table `delivery`
---
-ALTER TABLE `delivery`
-  ADD CONSTRAINT `delivery_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`);
-
---
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`cus_id`) REFERENCES `customers` (`cus_id`),
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`cour_id`) REFERENCES `courier` (`cour_id`);
-
---
--- Constraints for table `order_details`
---
-ALTER TABLE `order_details`
-  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `order_details_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`);
-
---
--- Constraints for table `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `product_category` (`category_id`);
-
---
--- Constraints for table `stock`
---
-ALTER TABLE `stock`
-  ADD CONSTRAINT `stock_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `stock_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`);
-
---
--- Constraints for table `supplier_transaction`
---
-ALTER TABLE `supplier_transaction`
-  ADD CONSTRAINT `supplier_transaction_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `supplier_transaction_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
