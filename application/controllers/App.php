@@ -76,14 +76,19 @@ class App extends CI_Controller {
 	}
 
 	private function setSession($data){
+
+
 		$sessionData = array(
-			'cus_id'=>$data[0]->cus_id,
-		    'username'  => $data[0]->username,
-		    'accesslevel' => $data[0]->accesslevel,
-		    'logged_in' => TRUE
-		);
+		  	'username'  => $data[0]->username,
+			'accesslevel' => $data[0]->accesslevel,
+		   	'logged_in' => TRUE
+		);				
 
 		$this->session->set_userdata($sessionData);
+		if($data[0]->accesslevel==3){
+			$result=$this->user->check_userid($data[0]->userid);
+			$this->session->set_userdata('cus_id',$result[0]->cus_id);
+		}
 	}
 
 	private function setFlashData($data){
