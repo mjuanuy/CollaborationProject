@@ -1,34 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Supplier extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Useraccount', 'user');
-		$this->load->model('Product','prod');	
 	}
 
 	public function index(){
 		$this->check_access();
-		$data['users'] = $this->user->read();
-
-		$data['pagename'] = 'Dashboard';
-		$data['contents'] = 'dashboard';		
-		$this->load->view('templates/sbadmin', $data);
-	}
-
-	public function update(){
-		$this->check_access();
-		$userid = $this->input->get('userid');
-
-		$data['useraccount'] = $this->user->read($userid);
-
-		$data['pagename'] = 'Dashboard';
-		$data['contents'] = 'contents/admin/update';		
+		$data['pagename'] = 'Login';
+		$data['contents'] = 'login';
+		$this->load->view('templates/headerlogin');
 		$this->load->view('templates/main', $data);
-
 	}
+
 	public function register_supplier(){
 		$this->check_access();
 		$data['pagename'] = 'Supplier Registration';
@@ -36,15 +23,17 @@ class Dashboard extends CI_Controller {
 		$this->load->view('templates/sbadmin', $data);
 	}
 
-	public function supplier_registration(){
+
+
+	public function registration(){
 
 		$data = $this->input->post(); // return $_POST global array
 
-		$err = $this->validate($data); // return array of error messages
+		$result = $this->validate($data); // return array of error messages
 
 		$this->setFlashData(array('alertType' => 'danger'));
 
-		if(count($err) == 0){
+		if(count($result) == 0){
 			$result=$this->user->create_supp($data);
 			if($this->user->create_supplier($data,$result)){
 				$this->setFlashData(array('alertType' => 'success'));
@@ -53,52 +42,37 @@ class Dashboard extends CI_Controller {
 				$this->setFlashData(array('system_msg' => array("Failed to create!")));
 			}
 		}else{
-			$this->setFlashData(array('system_msg' => $err));
+			$this->setFlashData(array('system_msg' => $result));
 		}
 		
 		redirect('Supplier/register_supplier');
-	}	
-
-	public function updateAccount(){
-
-		$data = $this->input->post();
-		$userid = $this->input->post('userid');
-
-		if($this->user->update($data, $userid)){
-			redirect('dashboard');
-		}else{
-			echo "Failed to update! <a href='".base_url('dashboard')."'>Go back</a>";
-		}
-
 	}
 
-	public function disable(){
+	private function setSession($data){
+		$sessionData = array(
+		    'username'  => $data[0]->username,
+		    'accesslevel' => $data[0]->accesslevel,
+		    'logged_in' => TRUE
+		);
 
-		$userid = $this->input->get('userid');
+		$this->session->set_userdata($sessionData);
+	}
 
-		if($this->user->disable($userid)){
-			redirect('dashboard');
-		}else{
-			echo "Failed to disable! <a href='".base_url('dashboard')."'>Go back</a>";
-		}
-
+	private function setFlashData($data){
+		$this->session->set_flashdata($data);
 	}
 
 	private function check_access(){
 		if($this->session->has_userdata('logged_in')){
 			if($this->session->userdata('accesslevel') == 1){
-				return true;
-			}else{
-				redirect('app');
+				redirect('dashboard');
+			}else if($this->session->userdata('accesslevel') == 3){
+				redirect('shop');
 			}
-	    }else{
-	    	redirect('app');
-	    }
-    }
-	private function setFlashData($data){
-		$this->session->set_flashdata($data);
-	}    
-
+		}else{
+			return true;
+		}
+	}
 
 	private function validate($data){
 
@@ -125,6 +99,6 @@ class Dashboard extends CI_Controller {
 		}
 
 		return $sudlanan_sa_error; // array size is zero if no errors
-	}    
+	}
 
 }

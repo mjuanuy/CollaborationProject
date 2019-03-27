@@ -6,7 +6,7 @@ class Useraccount extends CI_Model {
     protected $table = "useraccounts";
 
     public function check_account($data){
-    	$sql = "SELECT * FROM ".$this->table." join customers on useraccounts.userid=customers.userid WHERE username = '".$data['username']."' AND password = '".$data['password']."'";
+    	$sql = "SELECT * FROM ".$this->table." WHERE username = '".$data['username']."' AND password = '".$data['password']."'";
 
     	return $this->db->query($sql)->result();
     }
@@ -62,4 +62,42 @@ class Useraccount extends CI_Model {
 
 	}
 
+	public function check_userid($data){
+
+		$sql="SELECT * from customers where userid=".$data;
+
+		return $this->db->query($sql)->result();
+	}
+
+	public function create_supp($data){
+
+		$sql = "INSERT INTO ".$this->table." (username, password,accesslevel) 
+		VALUES ('".$data['username']."','".$data['password']."',4)";
+
+		$this->db->query($sql);
+		return $this->db->insert_id();
+
+		// return $this->db->insert($data);
+
+	} 
+	public function create_supplier($data,$result){
+
+		$sql = "INSERT INTO supplier( userid,contact_number, supplier_companyname, supplier_street, supplier_city, supplier_province  ,supplier_postal ,supplier_email  )
+		VALUES
+		(
+		".$result.
+		",'".$data['contact_number']."',
+		'".$data['supplier_companyname']."',
+		'".$data['supplier_street']."',
+		'".$data['supplier_city']."',
+		'".$data['supplier_province']."',
+		'".$data['supplier_postal']."',
+		'".$data['supplier_email']."'
+		)";
+
+		return $this->db->query($sql);
+
+		// return $this->db->insert($data);
+
+	}	   
 }

@@ -63,17 +63,21 @@ class Shop extends CI_Controller {
     }    
     public function checkout(){
     	$this->check_access();
-    	$customer=$this->session->userdata('cus_id');
-    	$data['customer_info']=$this->cust->read_customer_info_by_id($customer);
-        $data['cart_contents'] = $this->cart->contents();
-        $data['payment']= $this->Order->read_payment_method();  
-        $data['courier']=$this->Order->read_courier();  	
-    	$data['pagename'] = 'Orders';
-		$data['contents'] = 'contents/shop/order';	
-		$this->load->view('templates/header');		
-		$this->load->view('templates/main', $data);
-		$this->load->view('templates/footer');
-
+    	if($this->cart->total_items()){
+    			$customer=$this->session->userdata('cus_id');
+    			$data['customer_info']=$this->cust->read_customer_info_by_id($customer);
+        		$data['cart_contents'] = $this->cart->contents();
+        		$data['payment']= $this->Order->read_payment_method();  
+        		$data['courier']=$this->Order->read_courier();  	
+    			$data['pagename'] = 'Orders';
+				$data['contents'] = 'contents/shop/order';	
+				$this->load->view('templates/header');		
+				$this->load->view('templates/main', $data);
+				$this->load->view('templates/footer');
+		}
+		else{
+			redirect('shop');
+		}
 
 
     }
@@ -106,7 +110,6 @@ class Shop extends CI_Controller {
 		$mycart=$this->cart->contents();
 
 		foreach($mycart as $cart){
-
 			$newdata['order_id']=$result;
 			$newdata['product_id']=$cart['id'];
 			$newdata['quantity']=$cart['qty'];
