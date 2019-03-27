@@ -38,6 +38,11 @@ class App extends CI_Controller {
 				}else{
 					redirect('shop');
 				}
+
+		}else if(count($result) && $result[0]->accesslevel == 4){
+			$this->setSession($result);	
+
+			redirect('user_guide');				
 		}else{
 			$this->setFlashData(array('alertType' => 'danger'));
 			$this->setFlashData(array('system_msg' => array("Account doesn't Exist!")));
@@ -89,6 +94,10 @@ class App extends CI_Controller {
 			$result=$this->user->check_userid($data[0]->userid);
 			$this->session->set_userdata('cus_id',$result[0]->cus_id);
 		}
+		if($data[0]->accesslevel==4){
+			$result=$this->user->check_userid($data[0]->userid);
+			$this->session->set_userdata('supplier_id',$result[0]->supplier_id);
+		}		
 	}
 
 	private function setFlashData($data){
