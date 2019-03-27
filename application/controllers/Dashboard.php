@@ -29,6 +29,16 @@ class Dashboard extends CI_Controller {
 		$this->load->view('templates/main', $data);
 
 	}
+
+	public function add_product(){
+		$this->check_access();
+		$data['category']= $this->prod->read_all_category();
+		$data['supplier']=$this->prod->read_all_supplier();
+		$data['pagename'] = 'ADD PRODUCT';
+		$data['contents'] = 'contents/admin/addproduct';		
+		$this->load->view('templates/sbadmin', $data);		
+
+	}
 	public function register_supplier(){
 		$this->check_access();
 		$data['pagename'] = 'Supplier Registration';
@@ -37,6 +47,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function supplier_registration(){
+		$this->check_access();
 
 		$data = $this->input->post(); // return $_POST global array
 
@@ -48,7 +59,7 @@ class Dashboard extends CI_Controller {
 			$result=$this->user->create_supp($data);
 			if($this->user->create_supplier($data,$result)){
 				$this->setFlashData(array('alertType' => 'success'));
-				$this->setFlashData(array('system_msg' => array("Wait for admin approval!")));
+				$this->setFlashData(array('system_msg' => array("Supplier successfully added")));
 			}else{
 				$this->setFlashData(array('system_msg' => array("Failed to create!")));
 			}
@@ -70,6 +81,17 @@ class Dashboard extends CI_Controller {
 			echo "Failed to update! <a href='".base_url('dashboard')."'>Go back</a>";
 		}
 
+	}
+	public function submit_product(){
+		$data=$this->input->post();
+		if($this->prod->save_product($data)){
+			$this->setFlashData(array('alertType' => 'success'));
+			$this->setFlashData(array('system_msg' => array("Successfully added a new product")));
+		}
+		else{
+			$this->setFlashData(array('system_msg' => array("Failed to create!")));
+		}
+		redirect('dashboard/add_product');
 	}
 
 	public function disable(){
@@ -97,7 +119,9 @@ class Dashboard extends CI_Controller {
     }
 	private function setFlashData($data){
 		$this->session->set_flashdata($data);
-	}    
+	}  
+
+
 
 
 	private function validate($data){
