@@ -91,7 +91,7 @@ class App extends CI_Controller {
 
 		$this->session->set_userdata($sessionData);
 		if($data[0]->accesslevel==3){
-			$result=$this->user->check_userid($data[0]->userid);
+			$result=$this->user->check_customerid($data[0]->userid);
 			$this->session->set_userdata('cus_id',$result[0]->cus_id);
 		}
 		if($data[0]->accesslevel==4){

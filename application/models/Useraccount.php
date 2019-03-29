@@ -64,7 +64,7 @@ class Useraccount extends CI_Model {
 
 	public function check_customerid($data){
 
-		$sql="SELECT * from customers join where userid=".$data;
+		$sql="SELECT * from customers where userid=".$data;
 
 		return $this->db->query($sql)->result();
 	}
