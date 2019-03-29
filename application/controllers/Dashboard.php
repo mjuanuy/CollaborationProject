@@ -84,7 +84,8 @@ class Dashboard extends CI_Controller {
 	}
 	public function submit_product(){
 		$data=$this->input->post();
-		if($this->prod->save_product($data)){
+		if($result=$this->prod->save_product($data)){
+			$this->prod->add_stocks($data,$result);
 			$this->setFlashData(array('alertType' => 'success'));
 			$this->setFlashData(array('system_msg' => array("Successfully added a new product")));
 		}

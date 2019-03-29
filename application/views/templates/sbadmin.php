@@ -94,7 +94,7 @@
         <div id="inventoryLinks" class="collapse" aria-labelledby="headinginventory" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Inventory by:</h6>
-            <a class="collapse-item" href="inventory">Products</a>
+            <a class="collapse-item" href="<?php echo base_url('inventory');?>">Products</a>
             <a class="collapse-item" href="inventory">Supplier</a>
             <a class="collapse-item" href="inventory">Category</a>
           </div>

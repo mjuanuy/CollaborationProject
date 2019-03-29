@@ -45,6 +45,15 @@ class Product extends CI_Model {
 
 	public function save_product($data){
 
-		return $this->db->insert($this->table,$data);
+		$this->db->insert($this->table,$data);
+		return $this->db->insert_id();
+	}
+	public function add_stocks($data,$result){
+
+		$sql="INSERT INTO stock (supplier_id,product_id)
+		Values
+		(".$data['supplier_id'].",".$result.")";
+
+		return $this->db->query($sql);
 	}
 }
