@@ -96,8 +96,13 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Inventory by:</h6>
             <a class="collapse-item" href="<?php echo base_url('inventory');?>">Products</a>
+<<<<<<< HEAD
             <a class="collapse-item" href="<?php echo base_url('inventory');?>">Supplier</a>
             <a class="collapse-item" href="<?php echo base_url('inventory');?>">Category</a>
+=======
+            <a class="collapse-item" href="inventory">Supplier</a>
+            <a class="collapse-item" href="inventory">Category</a>
+>>>>>>> 830b406451533935302debe7151350fa827f57d8
           </div>
         </div-->
       </li>

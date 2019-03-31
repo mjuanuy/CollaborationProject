@@ -34,4 +34,11 @@ class Order extends CI_Model {
 	public function save_billing($data,$result){
 		return $this->db->insert('billing',array('amount'=>$data['amount'],'payment_status'=>$data['payment_status'],'payment_id'=>$data['payment_id'],'order_id'=>$result,'cus_id'=>$data['cus_id']));
 	}	
+
+	public function view_order_details($data){
+		$sql="SELECT * from products p join order_details od on p.product_id=od.product_id
+		join billing b on od.order_id = b.order_id where od.order_id=".$data." Group by p.product_id";
+
+		return $this->db->query($sql)->result();
+	}
 }

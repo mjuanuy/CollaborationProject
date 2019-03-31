@@ -38,10 +38,7 @@ class Inventory extends CI_Controller {
     
     public function product(){
         $data= array();
-        $view_product =$this->inv->view_product_history();
-
-        
-        
+        $data['view_product'] =$this->inv->view_product_history();
         $data['contents']= $this->load->view('contents/admin/test',$data,true);
 
       //  echo var_dump($data);

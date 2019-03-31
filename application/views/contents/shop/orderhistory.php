@@ -22,7 +22,7 @@
                           <td ><?php echo $key->orderDate?></td>
                           <td><?php echo $this->cart->format_number($key->amount)?></td>
                             
-                          <td> <a href="<?php echo base_url('shop/orderdetails?id='.$key->order_id); ?>" class='btn btn-sm btn-primary'>
+                          <td> <a href="<?php echo base_url('shop/order_details?details='.$key->order_id); ?>" class='btn btn-sm btn-primary'>
                             <i class='fas fa-edit'>View Details</i></a> </td>
                         </tr>
 
