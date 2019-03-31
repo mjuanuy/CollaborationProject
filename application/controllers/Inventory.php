@@ -17,6 +17,44 @@ class Inventory extends CI_Controller {
 		$this->load->view('templates/sbadmin', $data);
 	}
 
+	public function product_history(){
+		$productid = $this->input->get('product');
+		$data['product_detail']=$this->inv->get_product_info_history($productid);
+
+	//	$data['stock']=$this->inv->read_stocks_by_id($productid);
+	//	echo var_dump($data);
+		$data['pagename'] = 'Details';
+		$data['contents'] = 'contents/admin/product_history';		
+		$this->load->view('templates/sbadmin', $data);
+	}
+	public function product_history1(){
+        $data= array();
+        $data['view_history'] =$this->inv->view_product_history();
+        $data['contents']= $this->load->view('contents/admin/category',$data,true);
+
+        echo var_dump($data);
+        $this->load->view('templates/sbadmin',$data);
+    }
+    
+    public function product(){
+        $data= array();
+        $view_product =$this->inv->view_product_history();
+
+        
+        
+        $data['contents']= $this->load->view('contents/admin/test',$data,true);
+
+      //  echo var_dump($data);
+        $this->load->view('templates/sbadmin',$data);
+
+    }
+
+
+
+
+
+
+
 	public function disable(){
 
 		$userid = $this->input->get('userid');
