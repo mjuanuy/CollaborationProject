@@ -41,4 +41,27 @@ class Order extends CI_Model {
 
 		return $this->db->query($sql)->result();
 	}
+	public function view_order_by_courier($data){
+
+		$sql=" SELECT * FROM ORDERS O JOIN customers C ON O.cus_id = C.cus_id WHERE O.isDeliver ='no' AND O.cour_id=".$data;
+
+
+		return $this->db->query($sql)->result();
+	}
+	public function view_delivered_order_by_courier($data){
+
+		$sql=" SELECT * FROM ORDERS O JOIN customers C ON O.cus_id = C.cus_id WHERE O.isDeliver ='yes' AND O.cour_id=".$data;
+
+
+		return $this->db->query($sql)->result();
+	}	
+
+	public function deliver_order($id){
+
+		$sql="UPDATE ORDERS SET isDeliver = 'yes' , shippedDate = CURRENT_TIMESTAMP
+		WHERE order_id=".$id;
+
+		return $this->db->query($sql);
+	}
+
 }

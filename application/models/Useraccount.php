@@ -68,9 +68,15 @@ class Useraccount extends CI_Model {
 
 		return $this->db->query($sql)->result();
 	}
+	public function check_courierid($data){
+
+		$sql="SELECT * from courier where userid=".$data;
+
+		return $this->db->query($sql)->result();
+	}	
 	public function check_supplierid($data){
 
-		$sql="SELECT * from supplier join where userid=".$data;
+		$sql="SELECT * from supplier where userid=".$data;
 
 		return $this->db->query($sql)->result();
 	}	

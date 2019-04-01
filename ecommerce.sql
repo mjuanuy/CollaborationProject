@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2019 at 06:00 AM
+-- Generation Time: Mar 31, 2019 at 03:55 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -43,25 +43,8 @@ CREATE TABLE `billing` (
 --
 
 INSERT INTO `billing` (`billing_id`, `amount`, `payment_date`, `payment_status`, `payment_id`, `order_id`, `cus_id`) VALUES
-(5, 264320.00, '2019-03-24 15:46:53', 'Pending', 1, 11, 1),
-(6, 348318.88, '2019-03-24 16:35:03', 'Paid', 2, 12, 1),
-(7, 54880.00, '2019-03-24 16:36:19', 'Pending', 1, 13, 1),
-(8, 182558.88, '2019-03-25 15:08:02', 'Paid', 2, 14, 1),
-(9, 324798.88, '2019-03-25 16:12:35', 'Pending', 1, 15, 4),
-(10, 98560.00, '2019-03-25 16:31:56', 'Pending', 1, 16, 2),
-(11, 54880.00, '2019-03-26 17:45:41', 'Paid', 2, 17, 1),
-(12, 43680.00, '2019-03-26 17:46:10', 'Paid', 2, 18, 1),
-(13, 43680.00, '2019-03-26 20:09:50', 'Paid', 2, 19, 1),
-(14, 43680.00, '2019-03-26 20:13:56', 'Pending', 1, 20, 1),
-(15, 104158.88, '2019-03-26 20:16:46', 'Pending', 1, 21, 1),
-(16, 104158.88, '2019-03-26 20:17:05', 'Pending', 1, 22, 1),
-(17, 0.00, '2019-03-26 20:17:18', 'Paid', 2, 23, 1),
-(18, 109760.00, '2019-03-26 20:17:37', 'Paid', 2, 24, 1),
-(19, 0.00, '2019-03-26 20:18:16', 'Pending', 1, 25, 1),
-(20, 109760.00, '2019-03-26 20:18:26', 'Pending', 1, 26, 1),
-(21, 188160.00, '2019-03-26 20:21:27', 'Paid', 2, 27, 1),
-(22, 188160.00, '2019-03-26 20:21:33', 'Paid', 2, 28, 1),
-(23, 54880.00, '2019-03-26 20:23:41', 'Pending', 1, 29, 1);
+(24, 176960.00, '2019-03-29 14:11:55', 'Pending', 1, 30, 1),
+(25, 43680.00, '2019-03-29 14:49:50', 'Pending', 1, 31, 1);
 
 -- --------------------------------------------------------
 
@@ -153,25 +136,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `cus_id`, `cour_id`, `orderDate`, `shippedDate`, `isDeliver`) VALUES
-(11, 1, 1, '2019-03-24 15:46:53', '2019-03-24 15:46:53', 'no'),
-(12, 1, 1, '2019-03-24 16:35:03', '2019-03-24 16:35:03', 'no'),
-(13, 1, 1, '2019-03-24 16:36:19', '2019-03-24 16:36:19', 'no'),
-(14, 1, 1, '2019-03-25 15:08:01', '2019-03-25 15:08:01', 'no'),
-(15, 4, 1, '2019-03-25 16:12:35', '2019-03-25 16:12:35', 'no'),
-(16, 2, 1, '2019-03-25 16:31:55', '2019-03-25 16:31:55', 'no'),
-(17, 1, 1, '2019-03-26 17:45:41', '2019-03-26 17:45:41', 'no'),
-(18, 1, 1, '2019-03-26 17:46:10', '2019-03-26 17:46:10', 'no'),
-(19, 1, 1, '2019-03-26 20:09:50', '2019-03-26 20:09:50', 'no'),
-(20, 1, 1, '2019-03-26 20:13:56', '2019-03-26 20:13:56', 'no'),
-(21, 1, 1, '2019-03-26 20:16:46', '2019-03-26 20:16:46', 'no'),
-(22, 1, 1, '2019-03-26 20:17:05', '2019-03-26 20:17:05', 'no'),
-(23, 1, 1, '2019-03-26 20:17:17', '2019-03-26 20:17:17', 'no'),
-(24, 1, 1, '2019-03-26 20:17:37', '2019-03-26 20:17:37', 'no'),
-(25, 1, 1, '2019-03-26 20:18:16', '2019-03-26 20:18:16', 'no'),
-(26, 1, 1, '2019-03-26 20:18:26', '2019-03-26 20:18:26', 'no'),
-(27, 1, 1, '2019-03-26 20:21:27', '2019-03-26 20:21:27', 'no'),
-(28, 1, 1, '2019-03-26 20:21:33', '2019-03-26 20:21:33', 'no'),
-(29, 1, 1, '2019-03-26 20:23:41', '2019-03-26 20:23:41', 'no');
+(30, 1, 1, '2019-03-29 14:11:55', '2019-03-29 14:11:55', 'no'),
+(31, 1, 1, '2019-03-29 14:49:50', '2019-03-29 14:49:50', 'no');
 
 -- --------------------------------------------------------
 
@@ -190,48 +156,10 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`order_id`, `product_id`, `quantity`) VALUES
-(5, 15, 1),
-(5, 13, 1),
-(5, 16, 3),
-(6, 15, 1),
-(6, 13, 1),
-(6, 16, 3),
-(7, 15, 1),
-(7, 13, 1),
-(7, 16, 3),
-(8, 15, 1),
-(8, 13, 1),
-(8, 16, 3),
-(9, 15, 1),
-(9, 13, 1),
-(9, 16, 3),
-(10, 15, 1),
-(10, 13, 1),
-(10, 16, 3),
-(11, 15, 1),
-(11, 13, 1),
-(11, 16, 3),
-(12, 16, 2),
-(12, 13, 2),
-(12, 14, 1),
-(13, 15, 1),
-(14, 14, 1),
-(14, 13, 1),
-(15, 16, 2),
-(15, 15, 1),
-(15, 14, 1),
-(15, 13, 1),
-(16, 16, 1),
-(16, 15, 1),
-(17, 15, 1),
-(18, 16, 1),
-(19, 16, 1),
-(20, 16, 1),
-(22, 14, 1),
-(24, 15, 2),
-(28, 15, 2),
-(28, 13, 1),
-(29, 15, 1);
+(30, 16, 1),
+(30, 15, 1),
+(30, 13, 1),
+(31, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -281,7 +209,7 @@ INSERT INTO `products` (`product_id`, `product_name`, `purchase_price`, `sell_pr
 (14, 'ASUS-GX097', 86899, 92999, 'zephyrus.png', 'I7 9TH GEN WITH RTX 2080Ti', 'I7 9TH GEN WITH RTX 2080Ti', 2, 1, '2019-03-21 14:48:35'),
 (15, 'IPhone X', 45000, 49000, 'iphone.png', 'iphone for everybody', 'IPhone para sa mga dato rani ayaw na mog palit patas.on lng nako ang description arun ingnun.', 1, 1, '2019-03-21 14:50:00'),
 (16, 'Huawei Mate 10', 30000, 39000, 'mate.png', 'Mate 10 that rivals Iphone Babies', 'Mate 10 that rivals Iphone Babies Mate 10 that rivals Iphone Babies Mate 10 that rivals Iphone Babies Mate 10 that rivals Iphone Babies', 1, 3, '2019-03-21 14:54:20'),
-(17, 'Razer Blade 15', 90000, 119099, 'razer.png', 'razer razer', ' this is razer this is razer this is razer this is razer this is razer this is razer this is razer this is razer ', 2, 3, '2019-03-27 17:02:56');
+(21, 'Razer Blade 15', 90000, 119099, 'razer.png', 'this is razer', 'this is razerthis is razerthis is razerthis is razerthis is razerthis is razerthis is razerthis is razer', 2, 3, '2019-03-29 12:45:29');
 
 -- --------------------------------------------------------
 
@@ -323,7 +251,8 @@ INSERT INTO `stock` (`stock_id`, `product_id`, `supplier_id`, `quantity`) VALUES
 (2, 14, 2, 100),
 (3, 16, 1, 4),
 (4, 15, 2, 6),
-(13, 13, 1, 3);
+(13, 13, 1, 3),
+(14, 21, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -349,7 +278,8 @@ CREATE TABLE `supplier` (
 
 INSERT INTO `supplier` (`supplier_id`, `userid`, `supplier_companyname`, `contact_number`, `supplier_street`, `supplier_city`, `supplier_province`, `supplier_postal`, `supplier_email`) VALUES
 (1, 10, 'Walmart', '87000', 'Oregon,USA', '', '', '', 'walmart@ask.us'),
-(3, 16, 'Apple INC', '05646549', 'Driria', 'Cagayan de Oro', 'Misamis Oriental', '9600', 'mayjayparade@gmail.com');
+(3, 16, 'Apple INC', '05646549', 'Driria', 'Cagayan de Oro', 'Misamis Oriental', '9600', 'mayjayparade@gmail.com'),
+(4, 17, 'Razer INC', '05646549', 'Lilac Street', 'Davao', 'Davao Del Norte', '9000', 'marvinjohnuy@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -394,7 +324,8 @@ INSERT INTO `useraccounts` (`userid`, `username`, `password`, `status`, `accessl
 (7, 'may', 'may1234', 1, 3),
 (8, 'mjuan23', '1234qwe', 1, 3),
 (9, 'ervinjohnuy', '123456', 1, 3),
-(16, 'apple', 'qwe123', 1, 4);
+(16, 'apple', 'qwe123', 1, 4),
+(17, 'razer', '123456', 1, 4);
 
 --
 -- Indexes for dumped tables
@@ -501,7 +432,7 @@ ALTER TABLE `useraccounts`
 -- AUTO_INCREMENT for table `billing`
 --
 ALTER TABLE `billing`
-  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `courier`
@@ -525,7 +456,7 @@ ALTER TABLE `delivery`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -537,19 +468,19 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `supplier_transaction`
@@ -561,7 +492,7 @@ ALTER TABLE `supplier_transaction`
 -- AUTO_INCREMENT for table `useraccounts`
 --
 ALTER TABLE `useraccounts`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
