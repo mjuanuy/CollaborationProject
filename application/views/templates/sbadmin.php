@@ -66,47 +66,25 @@
             <a class="collapse-item" href="buttons.html">Buttons</a>
             <a class="collapse-item" href="cards.html">Cards</a>
           </div>
-
+        </div>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Registration</span>
+          <span>Utilities</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Add:</h6>
-            <a class="collapse-item" href="<?php echo base_url('Dashboard/register_supplier');?>">Supplier</a>
-            <a class="collapse-item" href="<?php echo base_url('Dashboard/add_product');?>">Products</a>
-            <a class="collapse-item" href="utilities-animation.html">Courier</a>
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="utilities-color.html">Colors</a>
+            <a class="collapse-item" href="utilities-border.html">Borders</a>
+            <a class="collapse-item" href="utilities-animation.html">Animations</a>
             <a class="collapse-item" href="utilities-other.html">Other</a>
           </div>
         </div>
       </li>
-
-        <!-- this is for the inventory admin link-->
-      <li class="nav-item">
-        <a  class="nav-link collapsed"  href="<?php echo base_url('inventory');?>" aria-expanded="true" aria-controls="inventoryLinks">
-          <i class="fas fa-fw fa-box"></i>
-          <span>Inventory</span>
-        </a>
-        <!--div id="inventoryLinks" class="collapse" aria-labelledby="headinginventory" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Inventory by:</h6>
-            <a class="collapse-item" href="<?php echo base_url('inventory');?>">Products</a>
-<<<<<<< HEAD
-            <a class="collapse-item" href="<?php echo base_url('inventory');?>">Supplier</a>
-            <a class="collapse-item" href="<?php echo base_url('inventory');?>">Category</a>
-=======
-            <a class="collapse-item" href="inventory">Supplier</a>
-            <a class="collapse-item" href="inventory">Category</a>
->>>>>>> 830b406451533935302debe7151350fa827f57d8
-          </div>
-        </div-->
-      </li>
-        <!-- this is for the inventory admin link-->
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -371,7 +349,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Collaboration Project 2019</span>
+            <span>Copyright &copy; Your Website 2019</span>
           </div>
         </div>
       </footer>
