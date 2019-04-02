@@ -73,3 +73,40 @@
                   ?>
     </form>
 </div>
+</div>
+
+</div>
+<br>
+<br>
+<h4>Orders</h4> 
+<div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Delivery</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php
+        $i=0;
+          foreach ($details as $key1):
+            $i++;
+              ?>
+                <tr>
+
+                  <td ><?php echo $i;?> </td>
+                  <td ><?php echo $key1->product_name?></td>
+                  <td ><?php echo $key1->quantity?></td>
+                  <td><?php echo $key1->isDeliver?></td>
+                
+                </tr>
+
+              <?php
+          endforeach;
+          ?>
+      </tbody>
+    </table>
+  </div>

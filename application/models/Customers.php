@@ -23,4 +23,13 @@ class Customers extends CI_Model {
 		return $this->db->query($sql)->result();
 	}
 
+
+	public function view_order_by_customer($id){
+
+		$sql="SELECT * from Customers left join orders on customers.cus_id = orders.cus_id left join order_details on orders.order_id = order_details.order_id
+			left join products on order_details.product_id = products.product_id where customers.cus_id=".$id." group by orders.order_id DESC";
+
+		return $this->db->query($sql)->result();
+	}
+
 }

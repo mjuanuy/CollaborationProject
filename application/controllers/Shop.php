@@ -158,6 +158,7 @@ class Shop extends CI_Controller {
 		$this->check_access();
 		$cus_data=$this->session->userdata('cus_id');
 		$data['order']=$this->cust->read_customer_info_by_id($cus_data);
+		$data['details']=$this->cust->view_order_by_customer($cus_data);
     	$data['pagename'] = 'Profile';
 		$data['contents'] = 'contents/shop/profile';	
 		$this->load->view('templates/header');		
