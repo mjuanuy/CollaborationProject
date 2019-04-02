@@ -88,17 +88,23 @@
 
         <!-- this is for the inventory admin link-->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#inventoryLinks" aria-expanded="true" aria-controls="inventoryLinks">
-          <i class="fas fa-fw fa-wrench"></i>
+        <a  class="nav-link collapsed"  href="<?php echo base_url('inventory');?>" aria-expanded="true" aria-controls="inventoryLinks">
+          <i class="fas fa-fw fa-box"></i>
           <span>Inventory</span>
-        <div id="inventoryLinks" class="collapse" aria-labelledby="headinginventory" data-parent="#accordionSidebar">
+        </a>
+        <!--div id="inventoryLinks" class="collapse" aria-labelledby="headinginventory" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Inventory by:</h6>
             <a class="collapse-item" href="<?php echo base_url('inventory');?>">Products</a>
+<<<<<<< HEAD
+            <a class="collapse-item" href="<?php echo base_url('inventory');?>">Supplier</a>
+            <a class="collapse-item" href="<?php echo base_url('inventory');?>">Category</a>
+=======
             <a class="collapse-item" href="inventory">Supplier</a>
             <a class="collapse-item" href="inventory">Category</a>
+>>>>>>> 830b406451533935302debe7151350fa827f57d8
           </div>
-        </div>
+        </div-->
       </li>
         <!-- this is for the inventory admin link-->
 
