@@ -16,7 +16,7 @@
                   <p>Category: <span><?php echo $product_detail[0]->category_name?></span></p>
               </div>
                     <div class="add-cart">
-                      <?php if($product_detail[0]->quantity==0){ ?>
+                      <?php if($product_detail[0]->stocks_qnty==0){ ?>
                         <h4 style="color:#FF0000"> Out Of Stock </h4>
 
                       <?php } 
@@ -25,7 +25,7 @@
 
 
                         <form action="<?php echo base_url('Shop/save_cart');?>" method="post">
-                            <input type="number" class="buyfield" name="qty" value="1" min="0" max="<?php echo $product_detail[0]->quantity?>"/>
+                            <input type="number" class="buyfield" name="qty" value="1" min="0" max="<?php echo $product_detail[0]->stocks_qnty?>"/>
                             <input type="hidden" class="buyfield" name="product_id" value="<?php echo $product_detail[0]->product_id?>"/>
                             <input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
                         </form>	

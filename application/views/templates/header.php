@@ -53,7 +53,6 @@
     <div>
       <h3 class="navbar-brand mr-1" >Welcome, <?= $this->session->userdata('username'); ?>!</h3>
     <ul class="navbar-nav ml-auto ml-md-0">
-      <li><a href="<?= base_url('shop/view_orders'); ?>" class="nav-link">Order History</a></li>
 <!--       <li class="nav-item dropdown no-arrow mx-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell fa-fw"></i>
@@ -68,6 +67,8 @@
       <li>
           <a class="nav-link" href="<?= base_url('app/logout'); ?>">Logout</a><
         </li>
+      
+
         <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <span>Account</span>
@@ -75,10 +76,12 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="<?= base_url('shop/view_profile'); ?>">Account Profile</a>
-            <a class="collapse-item" href="login.html">Account Setting</a>
+            <br>
+            <a class="collapse-item" href="<?= base_url('shop/view_orders'); ?>">Order History</a>
           </div>
         </div>
       </li>
+      
     </ul>
  <?php }else{?> 
       <a href="<?= base_url('app/'); ?>" class="btn btn-primary"> Login</a>

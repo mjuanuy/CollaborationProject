@@ -180,4 +180,18 @@ class App extends CI_Controller {
 		return $sudlanan_sa_error; // array size is zero if no errors
 	}
 
+
+	public function edit_profile(){
+
+		$data = $this->input->post(); // return $_POST global array
+
+		$result=$this->user->update_profile($data);
+
+
+		
+		
+		
+		redirect('shop/index');
+	}
+
 }

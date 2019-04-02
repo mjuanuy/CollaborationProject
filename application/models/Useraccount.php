@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Useraccount extends CI_Model {
 
     protected $table = "useraccounts";
+    protected $table1 = "customers";
+
 
     public function check_account($data){
     	$sql = "SELECT * FROM ".$this->table." WHERE username = '".$data['username']."' AND password = '".$data['password']."'";
@@ -105,5 +107,17 @@ class Useraccount extends CI_Model {
 
 		// return $this->db->insert($data);
 
-	}	   
+	}	  
+
+	public function update_profile($data){
+		$sql = "UPDATE ".$this->table1." SET last_name = '".$data['lastname']."', first_name = '".$data['firstname']."', middle_name = '".$data['middlename']."', contact_num = '".$data['contact']."', cus_email = '".$data['email']."', cus_street = '".$data['street']."', cus_city = '".$data['city']."', cus_province = '".$data['province']."', cus_postal = '".$data['postal']."' WHERE userid = '".$data['ID']."'";
+
+		return $this->db->query($sql);
+
+		// return $this->db->where('userid', $userid)->update($this->table, $data);
+
+	}
+
+
+
 }
