@@ -23,7 +23,8 @@
                           <td><?php echo $this->cart->format_number($key->amount)?></td>
                             
                           <td> <a href="<?php echo base_url('shop/order_details?details='.$key->order_id); ?>" class='btn btn-sm btn-primary'>
-                            <i class='fas fa-edit'>View Details</i></a> </td>
+                            <i class='fas fa-edit'>View Details</i></a>
+                             <a class="btn btn-success" href="<?php echo base_url('web/pdf/'.$key->order_id);?>">Download</a> </td>
                         </tr>
 
                       <?php
