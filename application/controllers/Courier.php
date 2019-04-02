@@ -42,6 +42,15 @@ class Courier extends CI_Controller {
 		$this->load->view('templates/sbadmin', $data);
 	}
 
+	public function order_details(){
+		$orderid = $this->input->get('order');
+		$data['ord_det']=$this->Order->view_order_details($orderid);
+		$data['pagename'] = 'Order Details';
+		$data['contents'] = 'contents/courier/order_details';		
+		$this->load->view('templates/main', $data);
+
+	}  	
+
 
 
 	public function registration(){
