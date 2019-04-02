@@ -18,7 +18,7 @@ class Customers extends CI_Model {
 
 	public function read_order_by_customer($id){
 
-		$sql="SELECT * FROM orders o join customers c on o.cus_id=c.cus_id join billing b on c.cus_id=b.cus_id join courier cr on o.cour_id=cr.cour_id where o.cus_id=".$id." Group by billing_id DESC";
+		$sql="SELECT * FROM orders o join customers c on o.cus_id=c.cus_id join billing b on c.cus_id=b.cus_id join courier cr on o.cour_id=cr.cour_id where o.cus_id=".$id." Group by billing_id";
 
 		return $this->db->query($sql)->result();
 	}
