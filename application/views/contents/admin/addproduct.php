@@ -40,7 +40,9 @@
 		</div>
 		<div class="form-group">
 				<label  class="col-md-2 text-left">Choose Image:</label>
-	            <input type="text" name = "product_image" id="input">
+	            <div class="controls">
+                <input class="span6 typeahead" name="product_image" id="fileInput" type="file"/>
+                </div>
 	    </div>		
 		<div class="form-group">
 		<label for="short_desc" class="col-md-2 text-left">Short description:</label>

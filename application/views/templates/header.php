@@ -19,30 +19,35 @@
 
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url()."assets/assets";?>/css/sb-admin.css" rel="stylesheet">
-
+<link href="<?= base_url('assets/template/sbadmin/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
 </head>
 
 <body id="page-top" style="background-color:#E8E8E8;">
 <div class="container-fluid" text-align="center" style="width:90%;background-color:#FFFFFF">
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-<div class="panel-body well">
+<div class="panel-body well" style="background:#130f0f;">
   <a href="<?= base_url('shop'); ?>">
       <img style="width:100px;height:68px" src="<?php echo base_url('uploads/r1.png')?>" />
   </a></div>
     
   <div class="container-fluid" style="margin-left:2%;width:100%;">
-
-        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-          <button class="btn btn-primary" type="button">
-            <i class="fas fa-search"></i>
+      <form action="<?php echo site_url('search/search_keyword');?>" method = "post">
+        <button class="btn btn-primary" type="button">
+        <i class="fas fa-search"></i>
+      <input style="color: black" type="text" name = "keyword" />
+      <input style="color: black" type="submit" value = "Search" />
           </button>
+      </form>
+
+<!-- <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"> -->
+
     <div style="margin-left:20px;">
               <a href="<?= base_url('shop/cart'); ?>" class="btn btn-info btn-lg" >
           <span class="glyphicon glyphicon-shopping-cart" style="margin:0px;"></span>
           <span>(<?php echo $this->cart->total_items();?> Items)</span>
         </a>   
     </div>          
-       
+    
     <div style="margin-left:5%;">
 
 
@@ -67,11 +72,30 @@
       </li> -->
       <li>
           <a class="nav-link" href="<?= base_url('app/logout'); ?>">Logout</a><
-
+        </li>
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Pages</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Login Screens:</h6>
+            <a class="collapse-item" href="login.html">Login</a>
+            <a class="collapse-item" href="register.html">Register</a>
+            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Other Pages:</h6>
+            <a class="collapse-item" href="404.html">404 Page</a>
+            <a class="collapse-item" href="blank.html">Blank Page</a>
+          </div>
+        </div>
+      </li>
     </ul>
  <?php }else{?> 
       <a href="<?= base_url('app/'); ?>" class="btn btn-primary"> Login</a>
  <?php } ?>
+
 
 
 

@@ -5,7 +5,7 @@
 <div class="container-fluid" >
 	<div class="panel-body well">
 		<div style="float:left;">
-    	 <img style="width:400px;height:400px;margin-right:30px;" src="<?php echo base_url('uploads/'.$product_detail[0]->product_image)?>" alt="" />
+    	 <img style="height:200px;margin-right:30px;" src="<?php echo base_url('uploads/'.$product_detail[0]->product_image)?>" alt="" />
  		</div>
      	<div >
 			<h2><?php echo $product_detail[0]->product_name?></h2>
@@ -16,11 +16,20 @@
                   <p>Category: <span><?php echo $product_detail[0]->category_name?></span></p>
               </div>
                     <div class="add-cart">
+                      <?php if($product_detail[0]->stocks_qnty==0){ ?>
+                        <h4 style="color:#FF0000"> Out Of Stock </h4>
+
+                      <?php } 
+
+                        else{ ?>
+
+
                         <form action="<?php echo base_url('Shop/save_cart');?>" method="post">
-                            <input type="number" class="buyfield" name="qty" value="1" min="0" max="<?php echo $product_detail[0]->quantity?>"/>
+                            <input type="number" class="buyfield" name="qty" value="1" min="0" max="<?php echo $product_detail[0]->stocks_qnty?>"/>
                             <input type="hidden" class="buyfield" name="product_id" value="<?php echo $product_detail[0]->product_id?>"/>
                             <input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
-                        </form>				
+                        </form>	
+                        <?php } ?>			
                     </div>              
           </div>
       </div>
