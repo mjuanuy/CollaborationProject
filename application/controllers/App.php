@@ -80,7 +80,10 @@ class App extends CI_Controller {
 			$this->setFlashData(array('system_msg' => $err));
 		}
 		
-		redirect('app/register');
+		$data = $this->input->post();
+		$result = $this->user->check_account($data);
+		$this->setSession($result);	
+		redirect('shop/checkout');
 	}
 
 	private function setSession($data){

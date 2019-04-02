@@ -38,7 +38,7 @@
                           <?php } ?>
                                                 
                             
-                          <td> <a href="<?php echo base_url('courier/order_details?order='.$key->order_id); ?>" class='btn btn-sm btn-primary'>
+                          <td> <a href="<?php echo base_url('/deliver?order='.$key->order_id); ?>" class='btn btn-sm btn-primary'>
                             <i class='fas fa-edit'>View Details</i></a>
                           <a href="<?php echo base_url('courier/deliver?order='.$key->order_id); ?>" class='btn btn-sm btn-success'>
                             <i class='fas fa-check'>Delivered</i></a>
